@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Dave Austin Ramirez</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="hero-header">
+        <div class="wrapper">
+            <header>
+                <div class="logo">
+                    <div class="logo-letter">D</div>
+                    <div class="logo-text">Dave Austin Ramirez</div>
+                </div>
+                <nav>
+                    <div class="togglebtn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <ul class="navlinks">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                        <li><a href="contacts.html">Contacts</a></li>
+                    </ul>
+                </nav>
+            </header>
+
+            <div class="portfolio-content">
+                <h1 style="color: #007ced;">My Portfolio</h1>
+                <p style="color: #e5e5e5;">Check out some of my projects below.</p>
+                <div class="projects">
+                    <!-- Project 1 -->
+                    <div class="project" id="project1">
+                        <h3 style="color: #007ced;">AniWow</h3>
+                        <div class="project-images">
+                            <img src="images/html1.png" alt="HTML1" class="project-image" id="image1">
+                        </div>
+                        <p style="color: #e5e5e5;">Aniwow, developed in April 2024, is a user-friendly platform designed for anime enthusiasts to watch their favorite anime online. Offering a vast library of titles and seamless streaming, Aniwow delivers an engaging viewing experience for anime fans worldwide</p>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="project" id="project2">
+                        <h3 style="color: #007ced;">TicTacToe</h3>
+                        <div class="project-images">
+                            <img src="images/react1.png" alt="React Project" class="project-image" id="image2">
+                        </div>
+                        <p style="color: #e5e5e5;">TicTacToe, developed in February 2024, is an interactive game that not only lets you play the classic game but also shows who makes the next move, tracks the move count, and detects whether the game ends in a win or a draw.</p>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="project" id="project3">
+                        <h3 style="color: #007ced;">DepEd Map</h3>
+                        <div class="project-images">
+                            <img src="images/ojt1.png" alt="Project 3 Image 1" class="project-image" id="image3">
+                            <!-- Add more images for Project 3 if needed -->
+                        </div>
+                        <p style="color: #e5e5e5;">DepEd Map, developed in July 2023 during my OJT at TechFactors Inc., is an interactive map designed to display every school affiliated with the Department of Education. It provides detailed information on each school's location and population.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal to display enlarged image -->
+    <div id="imageModal" class="modal">
+        <span class="close-btn" id="closeModal">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <button class="arrow-btn prev-btn" id="prevBtn">&#10094;</button>
+        <button class="arrow-btn next-btn" id="nextBtn">&#10095;</button>
+    </div>
+
+    <!-- Typed.js for typing text effect -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.10/typed.min.js"></script>
+    <script>
+        /** Button click to show/hide navbar **/
+        var togglebtn = document.querySelector(".togglebtn");
+        var nav = document.querySelector(".navlinks");
+
+        togglebtn.addEventListener("click", function () {
+            this.classList.toggle("click");
+            nav.classList.toggle("open");
+        });
+
+        // JavaScript for image modal functionality
+        document.addEventListener("DOMContentLoaded", function () {
+            // Modal elements
+            const modal = document.getElementById("imageModal");
+            const modalImage = document.getElementById("modalImage");
+            const closeModal = document.getElementById("closeModal");
+            const nextBtn = document.getElementById("nextBtn");
+            const prevBtn = document.getElementById("prevBtn");
+
+            // Image source arrays for all three projects
+            const project1ImageSources = [
+                'images/html1.png',
+                'images/html2.png',
+                'images/html3.png',
+                'images/html4.png',
+                'images/html5.png'
+            ];
+            const project2ImageSources = [
+                'images/react1.png',
+                'images/react2.png',
+                'images/react3.png'
+                // Add more images for Project 2 as needed
+            ];
+            const project3ImageSources = [
+                'images/ojt1.png',
+                'images/ojt2.png'
+                // Add more images for Project 3 as needed
+            ];
+
+            let currentImageIndex = 0;
+            let currentProjectImages = project1ImageSources; // Default to Project 1 images
+
+            // Function to open the modal and display the first image
+            function openModal(images) {
+                currentProjectImages = images;
+                currentImageIndex = 0;
+                modal.style.display = "block";
+                modalImage.src = currentProjectImages[currentImageIndex];
+            }
+
+            // Add click event listeners for Project 1 images
+            document.querySelectorAll('#project1 .project-image').forEach(image => {
+                image.addEventListener('click', function () {
+                    openModal(project1ImageSources);
+                });
+            });
+
+            // Add click event listeners for Project 2 images
+            document.querySelectorAll('#project2 .project-image').forEach(image => {
+                image.addEventListener('click', function () {
+                    openModal(project2ImageSources);
+                });
+            });
+
+            // Add click event listeners for Project 3 images
+            document.querySelectorAll('#project3 .project-image').forEach(image => {
+                image.addEventListener('click', function () {
+                    openModal(project3ImageSources);
+                });
+            });
+
+            // Next and Previous buttons functionality
+            nextBtn.addEventListener('click', function () {
+                currentImageIndex = (currentImageIndex + 1) % currentProjectImages.length;
+                modalImage.src = currentProjectImages[currentImageIndex];
+            });
+
+            prevBtn.addEventListener('click', function () {
+                currentImageIndex = (currentImageIndex - 1 + currentProjectImages.length) % currentProjectImages.length;
+                modalImage.src = currentProjectImages[currentImageIndex];
+            });
+
+            // Close modal when close button is clicked
+            closeModal.addEventListener("click", function () {
+                modal.style.display = "none";
+            });
+        });
+    </script>
+</body>
+
+</html>

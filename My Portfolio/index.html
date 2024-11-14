@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+</head>
+<body>
+    <div class="hero-header">
+        <div class="wrapper">
+            <header>
+                <div class="logo">
+                    <div class="logo-letter">D</div>
+                    <div class="logo-text">Dave Austin Ramirez</div>
+                </div>
+                <nav>
+                    <div class="togglebtn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <ul class="navlinks">
+                        <li><a href="index.html" class="active">Home</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="contacts.html">Contacts</a></li>
+                    </ul>
+                </nav>
+            </header>
+            <div class="container">
+                 <div class="hero-pic">
+                    <img src="images/main_photo.jpg" alt="profile pic">
+                 </div>
+                 <div class="hero-text">
+                    <h5>Hi I'm a <span class="input">Frontend Developer</span></h5>
+                    <h1>Engr. Dave Austin Ramirez</h1>
+                    <p> <br>I'm a Fresh Graduate of Computer Engineering, who loves to give his best in every task that has been assigned to me. Ready to give and receive fresh new ideas to develop a program.<br><br>
+                        I am driven by a passion for innovation and continuous learning. Whether working independently or collaborating as part of a team, I thrive on turning challenges into opportunities to grow and create effective solutions. 
+                    </p>
+
+                    <div class="btn-group">
+                       <a href="files/Ramirez_DaveAustin_CV.pdf" class="btn active">View CV</a>
+                    </div>
+                 </div>
+            </div>
+        </div>
+     </div>
+
+     <!-- Typed.js for typing text effect -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.10/typed.min.js"></script>
+     <script>
+        var togglebtn = document.querySelector(".togglebtn");
+        var nav = document.querySelector(".navlinks");
+
+        togglebtn.addEventListener("click", function(){
+            this.classList.toggle("click");
+            nav.classList.toggle("open");
+        });
+
+        var typed = new Typed(".input", {
+            strings: ["Frontend Developer", "Computer Engineer", "Web Developer"],
+            typedSpeed: 300,  
+            backSpeed: 100,    
+            backDelay: 2000,   
+            startDelay: 1000,  
+            loop: true
+        });
+     </script>
+</body>
+</html>
